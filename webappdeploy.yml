@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: webapp-deploy
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        name: webapp-label
+    spec:
+      containers:
+      - image: saravananmoorthy/kubeapprepo:0.4
+        name: webapp
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+  selector:
+    name: webapp-label
+  type: NodePort

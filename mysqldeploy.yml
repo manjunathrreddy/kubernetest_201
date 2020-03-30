@@ -18,7 +18,6 @@ metadata:
   name: mysql
   labels:
     app: webapp
-	
 spec:
   selector:
     matchLabels:
@@ -41,8 +40,7 @@ spec:
             secretKeyRef:
               name: mysql-pass
               key: password
-			  
-		ports:
+        ports:
         - containerPort: 3306
           name: mysql
         volumeMounts:
@@ -50,6 +48,6 @@ spec:
             mountPath: "/var/lib/mysql"
       restartPolicy: Always
       volumes:
-        - name: my-data
-          persistentVolumeClaim:
-            claimName: db-volume
+      - name: my-data
+        persistentVolumeClaim:
+          claimName: db-volume

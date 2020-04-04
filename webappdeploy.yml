@@ -10,7 +10,7 @@ spec:
         name: webapp-label
     spec:
       containers:
-      - image: saravananmoorthy/kubeapprepo:0.4
+      - image: manjunathramreddy/kube_app:latest
         name: webapp
         ports:
         - containerPort: 8080
